@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "NowDB function integrator for Node Red",
     "author": "NowDB",
-    "keywords": ["node-red"],
+    "keywords": ["node-red", "nowdb", "JSON", "query"],
     "node-red": {
         "nodes": {
             "select": "nowdb-request-select.js",
