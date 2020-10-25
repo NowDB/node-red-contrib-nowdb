@@ -1,0 +1,119 @@
+<script type="text/html" data-template-name="filter">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="filter">
+    <p>
+        <b>Input</b><br/>
+        <span>Input can use function node on function category.</span><br/><br/>
+        <span>The returned msg.payload on the function node example must use this format.</span><br/><br/>
+        <code>var json_data = [{<br/>
+            &nbsp;&nbsp;"name":"David",<br/>
+            &nbsp;&nbsp;"age":"25",<br/>
+            &nbsp;&nbsp;"sex":"M"<br/>
+            },{<br/>
+            &nbsp;&nbsp;"name":"Sarah",<br/>
+            &nbsp;&nbsp;"age":"23",<br/>
+            &nbsp;&nbsp;"sex":"F"<br/>
+            },{<br/>
+            &nbsp;&nbsp;"name":"Montana",<br/>
+            &nbsp;&nbsp;"age":"27",<br/>
+            &nbsp;&nbsp;"sex":"F"<br/>
+            },{<br/>
+            &nbsp;&nbsp;"name":"Steve",<br/>
+            &nbsp;&nbsp;"age":"23",<br/>
+            &nbsp;&nbsp;"sex":"M"<br/>
+            }]
+        </code><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
+                &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
+                &nbsp;&nbsp;"value" : "25ORF",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(json_data)<br/>
+            }<br/>
+            return msg;
+        </code><br/><br/>
+        <span>The JSON array data value of "data" attribute must on string format.</span><br/><br/>
+        <span>OR if you get data from other node payload can use this format.<span><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
+                &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
+                &nbsp;&nbsp;"value" : "25ORF",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+    </p>
+    <p>
+        <b>Attribute</b><br/>
+        <span>You can provide your data attribute inside JSON array data. For example you have JSON data <br/>
+        <code>[{<br/>
+        &nbsp;&nbsp;"name":"David",<br/>
+        &nbsp;&nbsp;"age":"25",<br/>
+        &nbsp;&nbsp;"sex":"M"<br/>
+        },{<br/>
+        &nbsp;&nbsp;"name":"Sarah",<br/>
+        &nbsp;&nbsp;"age":"23",<br/>
+        &nbsp;&nbsp;"sex":"F"<br/>
+        },{<br/>
+        &nbsp;&nbsp;"name":"Montana",<br/>
+        &nbsp;&nbsp;"age":"27",<br/>
+        &nbsp;&nbsp;"sex":"F"<br/>
+        },{<br/>
+        &nbsp;&nbsp;"name":"Steve",<br/>
+        &nbsp;&nbsp;"age":"23",<br/>
+        &nbsp;&nbsp;"sex":"M"<br/>
+        }]</code><br/>
+        You can provide attribute format like <code>age</code> or multiple atrribute like <code>ageANDsex</code>, <code>ageORsex</code>, <code>ageANDsexORname</code></span>
+    </p>
+    <p style="margin-bottom: 0px;">
+        <b>Operation</b>
+    </p>
+    <ul style="margin-top: 0px;">
+        <li>equals</li>
+        <li>notEquals</li>
+        <li>contains</li>
+        <li>notContains</li>
+        <li>greater</li>
+        <li>greaterEquals</li>
+        <li>less</li>
+        <li>lessEquals</li>
+        <li>starts</li>
+        <li>ends</li>
+        <li>between</li>
+        <li>betweenEquals</li>
+        <li>empty</li>
+        <li>notEmpty</li>
+    </ul>
+    <p>
+        <b>Operator</b><br/>
+        <span>Operator are set of operation functionality you can use to query your JSON array data. Operator must follow the sequence of your Attribute information. For example in your Attribute set <code>ageORsex</code> then the operator will be <code>equalsORequals</code>, the operation can choose from Operation list above.</span>
+    </p>
+    <p>
+        <b>Value of Condition</b><br/>
+        <span>Value are set of value following the sequence of Attribute and Operator. For example your Attribute set like this <code>ageORsex</code> and the Operator set like this <code>equalsORequals</code> then your Value can set like this <code>27ORM</code></span>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('filter', {
+        category: 'NowDB',
+        color: '#FB6CBB',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.svg",
+        label: function() {
+            return this.name || "filter";
+        }
+    });
+</script>
