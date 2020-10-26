@@ -13,7 +13,8 @@
         "nodes": {
             "select": "nowdb-request-select.js",
             "filter": "nowdb-json-filter.js",
-            "filter_ui": "nowdb-json-filter-ui.js"
+            "filter_ui": "nowdb-json-filter-ui.js",
+            "count": "nowdb-json-count.js"
         }
     }
 }
