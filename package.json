@@ -14,7 +14,8 @@
             "select": "nowdb-request-select.js",
             "filter": "nowdb-json-filter.js",
             "filter_ui": "nowdb-json-filter-ui.js",
-            "count": "nowdb-json-count.js"
+            "count": "nowdb-json-count.js",
+            "count_ui": "nowdb-json-count-ui.js"
         }
     }
 }
