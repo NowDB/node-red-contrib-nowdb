@@ -1,0 +1,49 @@
+<script type="text/html" data-template-name="string_float">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="string_float">
+    <p>
+        <b>Usage</b><br/>
+        <span>This node use for transform/parse your string value on JSON data array to floating number format.</span><br/><br/>
+        <span>To use this node you need to profide function node from function category which include this configuration inside</span><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "order_price", //attribute value to transform<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(json_data)<br/>
+            }<br/>
+            return msg;
+        </code><br/><br/>
+        <span>The JSON array data value of "data" attribute must on string format.</span><br/><br/>
+        <span>OR if you get data from other node payload can use this format.<span><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "order_price", //attribute value to transform<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('string_float', {
+        category: 'NowDB',
+        color: '#FB6CBB',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "swap.svg",
+        paletteLabel: 'string float',
+        label: function() {
+            return this.name || "string_float";
+        }
+    });
+</script>

@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-nowdb",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "NowDB function integrator for Node Red",
     "author": "NowDB",
     "keywords": [
@@ -15,7 +15,11 @@
             "filter": "nowdb-json-filter.js",
             "filter_ui": "nowdb-json-filter-ui.js",
             "count": "nowdb-json-count.js",
-            "count_ui": "nowdb-json-count-ui.js"
+            "count_ui": "nowdb-json-count-ui.js",
+            "sum": "nowdb-json-sum.js",
+            "string_int": "nowdb-string-int.js",
+            "string_float": "nowdb-string-float.js",
+            "string_number": "nowdb-string-number.js"
         }
     }
 }

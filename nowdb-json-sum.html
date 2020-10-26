@@ -1,0 +1,52 @@
+<script type="text/html" data-template-name="sum">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="sum">
+    <p>
+        <b>Usage</b><br/>
+        <span>This function use for sum your JSON array data.</span>
+    </p>
+    <p>
+        <b>Input</b><br/>
+        <span>Input can use function node on function category.</span><br/><br/>
+        <span>The returned msg.payload on the function node example must use this format.</span><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "price",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(json_data)<br/>
+            }<br/>
+            return msg;
+        </code><br/><br/>
+        <span>The JSON array data value of "data" attribute must on string format.</span><br/><br/>
+        <span>OR if you get data from other node payload can use this format.<span><br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "price",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('sum', {
+        category: 'NowDB',
+        color: '#FB6CBB',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.svg",
+        label: function() {
+            return this.name || "sum";
+        }
+    });
+</script>
