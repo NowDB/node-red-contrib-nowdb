@@ -1,14 +1,14 @@
-<script type="text/html" data-template-name="max">
+<script type="text/html" data-template-name="order">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
-<script type="text/html" data-help-name="max">
+<script type="text/html" data-help-name="order">
     <p>
         <b>About</b><br/>
-        <span>This node is use to get a data with highest value from JSON data array by defining your attribute.</span>
+        <span>This node is use to re ordering your JSON data array based on value of data attribute.</span>
     </p><br/>
     <p>
         <b>Input</b><br/>
@@ -24,7 +24,8 @@
         <br/><br/>
         <code>
             msg.payload = {<br/>
-                &nbsp;&nbsp;"attribute" : "price",<br/>
+                &nbsp;&nbsp;"attribute" : "order_price",<br/>
+                &nbsp;&nbsp;"condition" : "asc", //desc,<br/>
                 &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
             }<br/>
             return msg;
@@ -35,7 +36,7 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('max', {
+    RED.nodes.registerType('order', {
         category: 'NowDB',
         color: '#FDD0A2',
         defaults: {
@@ -46,10 +47,10 @@
         inputs: 1,
         outputs: 1,
         icon: "function.png",
-        paletteLabel: 'max',
+        paletteLabel: 'order',
         align: 'left',
         label: function() {
-            return this.name || "max";
+            return this.name || "order";
         }
     });
 </script>
