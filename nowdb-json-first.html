@@ -1,0 +1,33 @@
+<script type="text/html" data-template-name="first">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="first">
+    <p>
+        <b>Usage</b><br/>
+        <span>This function use for first your JSON array data.</span>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('first', {
+        category: 'NowDB',
+        color: '#FDD0A2',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.png",
+        paletteLabel: 'first',
+        align: 'left',
+        label: function() {
+            return this.name || "first";
+        }
+    });
+</script>
