@@ -1,4 +1,3 @@
-# node-red-nowdb
 This library use for process the JSON data and NowDB query functionality to node-red
 It use [NowDB](https://nowdb.net) cloud data service platform.
 

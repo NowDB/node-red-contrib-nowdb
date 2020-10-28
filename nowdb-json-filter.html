@@ -46,7 +46,7 @@
                 &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
                 &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
                 &nbsp;&nbsp;"value" : "25ORF",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+                &nbsp;&nbsp;"data" : JSON.stringify(msg.payload)<br/>
             }<br/>
             return msg;
         </code>
@@ -57,7 +57,7 @@
                 &nbsp;&nbsp;"attribute" : "ageANDsex",<br/>
                 &nbsp;&nbsp;"operator" : "equalsANDequals",<br/>
                 &nbsp;&nbsp;"value" : "25ANDF",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+                &nbsp;&nbsp;"data" : JSON.stringify(msg.payload)<br/>
             }<br/>
             return msg;
         </code>
@@ -68,7 +68,7 @@
                 &nbsp;&nbsp;"attribute" : "ageANDsexANDname",<br/>
                 &nbsp;&nbsp;"operator" : "equalsANDequalsANDcontains",<br/>
                 &nbsp;&nbsp;"value" : "25ANDFANDHana",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+                &nbsp;&nbsp;"data" : JSON.stringify(msg.payload)<br/>
             }<br/>
             return msg;
         </code>
