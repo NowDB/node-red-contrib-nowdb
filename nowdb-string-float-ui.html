@@ -16,8 +16,29 @@
 
 <script type="text/html" data-help-name="string_float_ui">
     <p>
-        <b>Usage</b><br/>
-        <span>You can use this string to float node by providing node which return string of JSON array data inside the <code>msg.payload</code>.</span>
+        <b>About</b><br/>
+        <span>This node is use to transform/parse your string value on JSON data array in to floating number format.</span>
+    </p><br/>
+    <p>
+        <b>Input</b><br/>
+        <span>This function need input on <code>msg.payload</code> from other function node.</span>
+        <br/><br/>
+        <span>You can find default <b>function</b> node on function category palette.</span>
+    </p><br/>
+    <p>
+        <b>Input Payload Example</b><br/>
+        <span>This is the example of <code>msg.payload</code>.</span>
+        <br/><br/>
+        <span>You need to put this function node before use this <b>float_ui</b> node.</span>
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/>
+        <span>This node accept only stringify JSON data array.</span>
     </p>
 </script>
 

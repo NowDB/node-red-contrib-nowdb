@@ -7,70 +7,9 @@
 
 <script type="text/html" data-help-name="filter">
     <p>
-        <b>Input</b><br/>
-        <span>Input can use function node on function category.</span><br/><br/>
-        <span>The returned msg.payload on the function node example must use this format.</span><br/><br/>
-        <code>var json_data = [{<br/>
-            &nbsp;&nbsp;"name":"David",<br/>
-            &nbsp;&nbsp;"age":"25",<br/>
-            &nbsp;&nbsp;"sex":"M"<br/>
-            },{<br/>
-            &nbsp;&nbsp;"name":"Sarah",<br/>
-            &nbsp;&nbsp;"age":"23",<br/>
-            &nbsp;&nbsp;"sex":"F"<br/>
-            },{<br/>
-            &nbsp;&nbsp;"name":"Montana",<br/>
-            &nbsp;&nbsp;"age":"27",<br/>
-            &nbsp;&nbsp;"sex":"F"<br/>
-            },{<br/>
-            &nbsp;&nbsp;"name":"Steve",<br/>
-            &nbsp;&nbsp;"age":"23",<br/>
-            &nbsp;&nbsp;"sex":"M"<br/>
-            }]
-        </code><br/><br/>
-        <code>
-            msg.payload = {<br/>
-                &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
-                &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
-                &nbsp;&nbsp;"value" : "25ORF",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(json_data)<br/>
-            }<br/>
-            return msg;
-        </code><br/><br/>
-        <span>The JSON array data value of "data" attribute must on string format.</span><br/><br/>
-        <span>OR if you get data from other node payload can use this format.<span><br/><br/>
-        <code>
-            msg.payload = {<br/>
-                &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
-                &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
-                &nbsp;&nbsp;"value" : "25ORF",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
-            }<br/>
-            return msg;
-        </code>
-    </p>
-    <p>
-        <b>Attribute</b><br/>
-        <span>You can provide your data attribute inside JSON array data. For example you have JSON data <br/>
-        <code>[{<br/>
-        &nbsp;&nbsp;"name":"David",<br/>
-        &nbsp;&nbsp;"age":"25",<br/>
-        &nbsp;&nbsp;"sex":"M"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Sarah",<br/>
-        &nbsp;&nbsp;"age":"23",<br/>
-        &nbsp;&nbsp;"sex":"F"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Montana",<br/>
-        &nbsp;&nbsp;"age":"27",<br/>
-        &nbsp;&nbsp;"sex":"F"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Steve",<br/>
-        &nbsp;&nbsp;"age":"23",<br/>
-        &nbsp;&nbsp;"sex":"M"<br/>
-        }]</code><br/>
-        You can provide attribute format like <code>age</code> or multiple atrribute like <code>ageANDsex</code>, <code>ageORsex</code>, <code>ageANDsexORname</code></span>
-    </p>
+        <b>About</b><br/>
+        <span>This node can use for filtering JSON data array with adjustable operation.</span>
+    </p><br/>
     <p style="margin-bottom: 0px;">
         <b>Operation</b>
     </p>
@@ -89,14 +28,52 @@
         <li>betweenEquals</li>
         <li>empty</li>
         <li>notEmpty</li>
-    </ul>
+    </ul><br/>
     <p>
-        <b>Operator</b><br/>
-        <span>Operator are set of operation functionality you can use to query your JSON array data. Operator must follow the sequence of your Attribute information. For example in your Attribute set <code>ageORsex</code> then the operator will be <code>equalsORequals</code>, the operation can choose from Operation list above.</span>
-    </p>
+        <b>Input</b><br/>
+        <span>This function need input on <code>msg.payload</code> from other function node.</span>
+        <br/><br/>
+        <span>You can find default <b>function</b> node on function category palette.</span>
+    </p><br/>
     <p>
-        <b>Value of Condition</b><br/>
-        <span>Value are set of value following the sequence of Attribute and Operator. For example your Attribute set like this <code>ageORsex</code> and the Operator set like this <code>equalsORequals</code> then your Value can set like this <code>27ORM</code></span>
+        <b>Input Payload Example</b><br/>
+        <span>This is the example of <code>msg.payload</code>.</span>
+        <br/><br/>
+        <span>You need to put this function node before use this <b>filter</b> node.</span>
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "ageORsex",<br/>
+                &nbsp;&nbsp;"operator" : "equalsORequals",<br/>
+                &nbsp;&nbsp;"value" : "25ORF",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/> Or
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "ageANDsex",<br/>
+                &nbsp;&nbsp;"operator" : "equalsANDequals",<br/>
+                &nbsp;&nbsp;"value" : "25ANDF",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/> Or
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "ageANDsexANDname",<br/>
+                &nbsp;&nbsp;"operator" : "equalsANDequalsANDcontains",<br/>
+                &nbsp;&nbsp;"value" : "25ANDFANDHana",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/>
+        <span>This node accept only stringify JSON data array.</span>
     </p>
 </script>
 

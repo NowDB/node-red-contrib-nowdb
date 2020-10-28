@@ -15,31 +15,24 @@
         <label for="node-input-value">Value</label>
         <input type="text" id="node-input-value" placeholder="JSON Data Attribute Value">
     </div>
+    <div class="form-tips">
+        <span>
+            <b>Attribute</b>: You need to fill in Attribute with one or more attributes from your JSON data array.<br/>
+            <b>Example</b>: ageANDsex or ageORsex or ageANDsexORname<br/><br/>
+            <b>Operator</b>: You need to fill in Operator with one or more operation.<br/>
+            <b>Operation</b>: equals, notEquals, contains, notContains, greater, greaterEquals, less, lessEquals, starts, ends, between, betweenEquals, empty, notEmpty<br/>
+            <b>Example</b>: equalsANDequals or equalsORequals or equalsANDequalsORcontains<br/><br/>
+            <b>Operator</b>: You need to fill in Value with information that you want to filter.<br/>
+            <b>Example</b>: 25ANDMale or 23ORFemale or 24ANDMaleORJonathan<br/><br/>
+        </span>
+    </div>
 </script>
 
 <script type="text/html" data-help-name="filter_ui">
     <p>
-        <b>Attribute</b><br/>
-        <span>You can provide your data attribute inside JSON array data. For example you have JSON data <br/>
-        <code>[{<br/>
-        &nbsp;&nbsp;"name":"David",<br/>
-        &nbsp;&nbsp;"age":"25",<br/>
-        &nbsp;&nbsp;"sex":"M"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Sarah",<br/>
-        &nbsp;&nbsp;"age":"23",<br/>
-        &nbsp;&nbsp;"sex":"F"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Montana",<br/>
-        &nbsp;&nbsp;"age":"27",<br/>
-        &nbsp;&nbsp;"sex":"F"<br/>
-        },{<br/>
-        &nbsp;&nbsp;"name":"Steve",<br/>
-        &nbsp;&nbsp;"age":"23",<br/>
-        &nbsp;&nbsp;"sex":"M"<br/>
-        }]</code><br/>
-        You can provide attribute format like <code>age</code> or multiple atrribute like <code>ageANDsex</code>, <code>ageORsex</code>, <code>ageANDsexORname</code></span>
-    </p>
+        <b>About</b><br/>
+        <span>This node can use for filtering JSON data array with adjustable operation.</span>
+    </p><br/>
     <p style="margin-bottom: 0px;">
         <b>Operation</b>
     </p>
@@ -58,20 +51,27 @@
         <li>betweenEquals</li>
         <li>empty</li>
         <li>notEmpty</li>
-    </ul>
+    </ul><br/>
     <p>
-        <b>Operator</b><br/>
-        <span>Operator are set of operation functionality you can use to query your JSON array data. Operator must follow the sequence of your Attribute information. For example in your Attribute set <code>ageORsex</code> then the operator will be <code>equalsORequals</code>, the operation can choose from Operation list above.</span>
-    </p>
+        <b>Input</b><br/>
+        <span>This function need input on <code>msg.payload</code> from other function node.</span>
+        <br/><br/>
+        <span>You can find default <b>function</b> node on function category palette.</span>
+    </p><br/>
     <p>
-        <b>Value of Condition</b><br/>
-        <span>Value are set of value following the sequence of Attribute and Operator. For example your Attribute set like this <code>ageORsex</code> and the Operator set like this <code>equalsORequals</code> then your Value can set like this <code>27ORM</code></span>
-    </p>
-    <p>
-        <b>Usage</b><br/>
-        <span>You can use this filter_ui node by providing node which return string of JSON array data inside the <code>msg.payload</code>.</span><br/><br/>
-        <span>You can use combine this filter_ui node with ither filter_ui.</span><br/><br/>
-        <span>This node will return your JSON array data on string format, to get the data in JSON array data format you need to combine with the JSON parse node in parser category.</span>
+        <b>Input Payload Example</b><br/>
+        <span>This is the example of <code>msg.payload</code>.</span>
+        <br/><br/>
+        <span>You need to put this function node before use this <b>filter_ui</b> node.</span>
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/>
+        <span>This node accept only stringify JSON data array.</span>
     </p>
 </script>
 
