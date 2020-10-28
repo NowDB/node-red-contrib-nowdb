@@ -1457,11 +1457,11 @@ module.exports = function(RED) {
         nq = NowDB;
     })();
 
-    //Count
-    var json_count = function(data, attribute) {
+    //Take
+    var json_take = function(data, take_record) {
         var exec_query = null;
-        if (data.length > 0 && (attribute != '' || attribute != null)) {
-            var query = "nowdb.from(data).count('" + attribute + "')";
+        if (data.length > 0 && (take_record != '' || take_record != null)) {
+            var query = "nowdb.from(data).take('" + take_record + "')";
             exec_query = eval(query)
         } else {
             exec_query = []
@@ -1471,16 +1471,16 @@ module.exports = function(RED) {
     }
 
     //Payload Read & Response
-    function count_ui(config) {
+    function take_ui(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
         node.on('input', function(msg) {
-            var data = json_count(JSON.parse(msg.payload), config.attribute);
+            var data = json_take(JSON.parse(msg.payload), config.ammount);
             msg.payload = JSON.stringify(data);
             node.send(msg);
         });
     }
 
-    RED.nodes.registerType("count_ui", count_ui);
+    RED.nodes.registerType("take_ui", take_ui);
 }

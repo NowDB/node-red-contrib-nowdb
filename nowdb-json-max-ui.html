@@ -1,4 +1,4 @@
-<script type="text/html" data-template-name="count_ui">
+<script type="text/html" data-template-name="max_ui">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -14,10 +14,10 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="count_ui">
+<script type="text/html" data-help-name="max_ui">
     <p>
         <b>About</b><br/>
-        <span>This node is use to get data counted.</span>
+        <span>This node is use to get a data with highest value from JSON data array by defining your attribute.</span>
     </p><br/>
     <p>
         <b>Input</b><br/>
@@ -29,12 +29,10 @@
         <b>Input Payload Example</b><br/>
         <span>This is the example of <code>msg.payload</code>.</span>
         <br/><br/>
-        <span>You need to put this function node before use this <b>count_ui</b> node.</span>
+        <span>You need to put this function node before use this <b>max_ui</b> node.</span>
         <br/><br/>
         <code>
-            msg.payload = {<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
-            }<br/>
+            msg.payload = JSON.stringfy(msg.payload);<br/>
             return msg;
         </code>
         <br/><br/>
@@ -43,21 +41,25 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('count_ui', {
+    RED.nodes.registerType('max_ui', {
         category: 'NowDB',
         color: '#FDD0A2',
         defaults: {
             name: {
                 value: ""
+            },
+            attribute: {
+                value: "",
+                required: true
             }
         },
         inputs: 1,
         outputs: 1,
         icon: "function.png",
-        paletteLabel: 'count ui',
+        paletteLabel: 'max ui',
         align: 'left',
         label: function() {
-            return this.name || "count_ui";
+            return this.name || "max_ui";
         }
     });
 </script>

@@ -1,11 +1,11 @@
-<script type="text/html" data-template-name="sum_ui">
+<script type="text/html" data-template-name="average_ui">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
         <label for="node-input-attribute">Attribute</label>
-        <input type="text" id="node-input-attribute" placeholder="JSON Data Attribute">
+        <input type="text" id="node-input-attribute" placeholder="Attribute">
     </div>
     <div class="form-tips">
         <span>
@@ -14,10 +14,10 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="sum_ui">
+<script type="text/html" data-help-name="average_ui">
     <p>
         <b>About</b><br/>
-        <span>This node is use to get sum of the data.</span>
+        <span>This node is use to get average by defining your attribute from JSON data array.</span>
     </p><br/>
     <p>
         <b>Input</b><br/>
@@ -29,7 +29,7 @@
         <b>Input Payload Example</b><br/>
         <span>This is the example of <code>msg.payload</code>.</span>
         <br/><br/>
-        <span>You need to put this function node before use this <b>sum_ui</b> node.</span>
+        <span>You need to put this function node before use this <b>average_ui</b> node.</span>
         <br/><br/>
         <code>
             msg.payload = JSON.stringfy(msg.payload);<br/>
@@ -41,7 +41,7 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('sum_ui', {
+    RED.nodes.registerType('average_ui', {
         category: 'NowDB',
         color: '#FDD0A2',
         defaults: {
@@ -56,10 +56,10 @@
         inputs: 1,
         outputs: 1,
         icon: "function.png",
-        paletteLabel: 'sum ui',
+        paletteLabel: 'average ui',
         align: 'left',
         label: function() {
-            return this.name || "sum_ui";
+            return this.name || "average_ui";
         }
     });
 </script>

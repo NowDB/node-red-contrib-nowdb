@@ -1457,11 +1457,11 @@ module.exports = function(RED) {
         nq = NowDB;
     })();
 
-    //Count
-    var json_count = function(data, attribute) {
+    //min
+    var json_max = function(data, attribute) {
         var exec_query = null;
         if (data.length > 0 && (attribute != '' || attribute != null)) {
-            var query = "nowdb.from(data).count('" + attribute + "')";
+            var query = "nowdb.from(data).max('" + attribute + "')";
             exec_query = eval(query)
         } else {
             exec_query = []
@@ -1471,16 +1471,16 @@ module.exports = function(RED) {
     }
 
     //Payload Read & Response
-    function count(config) {
+    function max_ui(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
         node.on('input', function(msg) {
-            var data = json_count(JSON.parse(msg.payload));
+            var data = json_max(JSON.parse(msg.payload), config.attribute);
             msg.payload = JSON.stringify(data);
             node.send(msg);
         });
     }
 
-    RED.nodes.registerType("count", count);
+    RED.nodes.registerType("max_ui", max_ui);
 }

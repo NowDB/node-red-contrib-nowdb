@@ -23,10 +23,7 @@
         <span>You need to put this function node before use this <b>count</b> node.</span>
         <br/><br/>
         <code>
-            msg.payload = {<br/>
-                &nbsp;&nbsp;"attribute" : "price",<br/>
-                &nbsp;&nbsp;"data" : JSON.stringfy(msg.payload)<br/>
-            }<br/>
+            msg.payload = JSON.stringfy(msg.payload);<br/>
             return msg;
         </code>
         <br/><br/>

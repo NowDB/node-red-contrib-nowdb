@@ -1457,30 +1457,56 @@ module.exports = function(RED) {
         nq = NowDB;
     })();
 
-    //Count
-    var json_count = function(data, attribute) {
-        var exec_query = null;
-        if (data.length > 0 && (attribute != '' || attribute != null)) {
-            var query = "nowdb.from(data).count('" + attribute + "')";
-            exec_query = eval(query)
-        } else {
-            exec_query = []
-        }
+    //Order
+    var json_order = function(data, attribute, decorator) {
+        var exec_query = data;
+        // console.log(data_array);
 
+        if (data.length > 0) {
+            var new_attribute = [];
+            var new_decorator = [];
+
+            var attribute_split = attribute.split('AND');
+            for (i = 0; i < attribute_split.length; i++) {
+                new_attribute.push(attribute_split[i]);
+            }
+
+            var decorator_split = decorator.split('AND');
+            for (i = 0; i < decorator_split.length; i++) {
+                new_decorator.push(decorator_split[i]);
+            }
+
+            if (new_attribute.length === new_decorator.length) {
+                var query = "nowdb.from(data)";
+                for (i = 0; i < new_attribute.length; i++) {
+                    if (new_decorator[i] === 'asc') {
+                        query += ".sort('" + new_attribute[i] + "')";
+                    } else if (new_decorator[i] === 'desc') {
+                        query += ".sort('-" + new_attribute[i] + "')";
+                    }
+                }
+
+                query += '.select()';
+                exec_query = eval(query);
+            } else {
+                // Do Nothing
+            }
+
+        }
         return exec_query;
     }
 
     //Payload Read & Response
-    function count(config) {
+    function order_ui(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
         node.on('input', function(msg) {
-            var data = json_count(JSON.parse(msg.payload));
+            var data = json_order(JSON.parse(msg.payload), config.attribute, config.condition);
             msg.payload = JSON.stringify(data);
             node.send(msg);
         });
     }
 
-    RED.nodes.registerType("count", count);
+    RED.nodes.registerType("order_ui", order_ui);
 }
