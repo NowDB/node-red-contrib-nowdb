@@ -2,7 +2,7 @@ This library use for process the JSON data and NowDB query functionality to node
 It use [NowDB](https://nowdb.net) cloud data service platform.
 
 ## What is Nowdb
-NowDB is a Cloud Data Service Platform,a tool for IT Manager and Developer.
+NowDB is a Cloud Data Service Platform, a tool for IT Manager and Developer.
 
 ## Install
 Run the following command in the root directory of your Node-RED install:
