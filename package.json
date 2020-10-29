@@ -28,6 +28,7 @@
             "last": "nowdb-json-last.js",
             "max": "nowdb-json-max.js",
             "max_ui": "nowdb-json-max-ui.js",
+            "merge": "nowdb-json-merge.js",
             "min": "nowdb-json-min.js",
             "min_ui": "nowdb-json-min-ui.js",
             "sort": "nowdb-json-order.js",
