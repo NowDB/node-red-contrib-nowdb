@@ -1,0 +1,32 @@
+<script type="text/html" data-template-name="merge">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="merge">
+    <p>
+        <b>About</b><br/> This node use for merge 2 JSON data array (Experimental). Please import flow.js on this gist <a href="https://gist.github.com/taufiksu/2634424ba1138f19d485c9f458b89743" target="_blank">Merge Flow</a> to your Node-Red.
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('merge', {
+        category: 'NowDB',
+        color: '#FDD0A2',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.png",
+        paletteLabel: 'merge',
+        align: 'left',
+        label: function() {
+            return this.name || "merge";
+        }
+    });
+</script>
