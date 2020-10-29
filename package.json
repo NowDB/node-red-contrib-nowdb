@@ -18,6 +18,8 @@
             "categorize": "nowdb-json-categorize.js",
             "categorize_ui": "nowdb-json-categorize-ui.js",
             "count": "nowdb-json-count.js",
+            "coutput": "nowdb-json-coutput.js",
+            "coutput_ui": "nowdb-json-coutput-ui.js",
             "distinct": "nowdb-json-distinct.js",
             "distinct_ui": "nowdb-json-distinct-ui.js",
             "filter": "nowdb-json-filter.js",

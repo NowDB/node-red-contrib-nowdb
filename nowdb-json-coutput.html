@@ -1,0 +1,65 @@
+<script type="text/html" data-template-name="custom_output">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="custom_output">
+    <p>
+        <b>About</b><br/>
+        <span>This node is use to publish custom custom output by defining your attribute and it's type from JSON data array.</span>
+    </p><br/>
+    <p>
+        <b>Input</b><br/>
+        <span>This function need input on <code>msg.payload</code> from other function node.</span>
+        <br/><br/>
+        <span>You can find default <b>function</b> node on function category palette.</span>
+    </p><br/>
+    <p style="margin-bottom: 0px;">
+        <b>Data Types</b>
+    </p>
+    <ul style="margin-top: 0px;">
+        <li>string</li>
+        <li>int</li>
+        <li>float</li>
+        <li>number</li>
+    </ul><br/>
+    <p>
+        <b>Input Payload Example</b><br/>
+        <span>This is the example of <code>msg.payload</code>.</span>
+        <br/><br/>
+        <span>You need to put this function node before use this <b>custom_output</b> node.</span>
+        <br/><br/>
+        <code>
+            msg.payload = {<br/>
+                &nbsp;&nbsp;"attribute" : "nameANDpriceAND...AND...",<br/>
+                &nbsp;&nbsp;"types" : "stringANDnumberAND...AND...",<br/>
+                &nbsp;&nbsp;"data" : JSON.stringify(msg.payload)<br/>
+            }<br/>
+            return msg;
+        </code>
+        <br/><br/>
+        <span>This node accept only stringify JSON data array.</span>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('custom_output', {
+        category: 'NowDB',
+        color: '#FDD0A2',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.png",
+        paletteLabel: 'custom output',
+        align: 'left',
+        label: function() {
+            return this.name || "custom_output";
+        }
+    });
+</script>
