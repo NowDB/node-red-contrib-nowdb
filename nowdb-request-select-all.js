@@ -2,7 +2,7 @@ module.exports = function(RED) {
     var request = require("request");
 
     //Payload Read & Response
-    function select(config) {
+    function select_all(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
@@ -26,5 +26,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("select", select);
+    RED.nodes.registerType("select_all", select_all);
 }

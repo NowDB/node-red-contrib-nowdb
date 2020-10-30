@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-nowdb",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "JSON processor & NowDB function integrator for Node Red",
     "author": "NowDB",
     "keywords": [
@@ -12,7 +12,10 @@
     ],
     "node-red": {
         "nodes": {
-            "select": "nowdb-request-select.js",
+            "insert": "nowdb-request-insert.js",
+            "select_all": "nowdb-request-select-all.js",
+            "remove_id": "nowdb-request-remove-id.js",
+            "update_id": "nowdb-request-update-id.js",
             "average": "nowdb-json-avg.js",
             "average_ui": "nowdb-json-avg-ui.js",
             "categorize": "nowdb-json-categorize.js",

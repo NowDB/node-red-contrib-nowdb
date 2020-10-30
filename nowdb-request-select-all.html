@@ -1,0 +1,76 @@
+<script type="text/html" data-template-name="select_all">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-token">Token</label>
+        <input type="text" id="node-input-token" placeholder="NowDB Token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-project">Project</label>
+        <input type="text" id="node-input-project" placeholder="NowDB Project">
+    </div>
+    <div class="form-row">
+        <label for="node-input-collection">Collection</label>
+        <input type="text" id="node-input-collection" placeholder="NowDB Project Collection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-appid">appid</label>
+        <input type="text" id="node-input-appid" placeholder="NowDB Project appid">
+    </div>
+    <div class="form-tips">
+        <span>
+            <b>Note</b>: You can get information about
+            <b>Token</b>,
+            <b>Project</b>,
+            <b>Collection</b> and
+            <b>appid</b> from
+            <a href="https://nowdb.net" target="_blank">https://nowdb.net</a>
+        </span>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="select_all">
+    <p>
+        <b>About</b><br/>
+        <span>This node use for request all data from a <b>collection</b> in <a href="https://nowdb.net">NowDB</a>.</span><br/><br/>
+        <span>This node will return data from NowDB with stringify JSON data array on <code>msg.payload</code>.</span>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('select_all', {
+        category: 'NowDB',
+        color: '#E7E7AE',
+        defaults: {
+            name: {
+                value: ""
+            },
+            token: {
+                value: "",
+                required: true
+            },
+            project: {
+                value: "",
+                required: true
+            },
+            collection: {
+                value: "",
+                required: true
+            },
+            appid: {
+                value: "",
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "white-globe.png",
+        paletteLabel: 'select all',
+        align: 'left',
+        label: function() {
+            return this.name || "select_all";
+        }
+    });
+</script>
