@@ -11,8 +11,8 @@ module.exports = function(RED) {
                 config.token + '/project/' +
                 config.project + '/collection/' +
                 config.collection + '/appid/' +
-                config.appid + '/' +
-                msg.payload.where_condition + '/' +
+                config.appid + '/where_field/' +
+                msg.payload.where_field + '/where_value/' +
                 msg.payload.where_value;
 
             request.get(uri, function(error, response, body) {
