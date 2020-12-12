@@ -14,6 +14,7 @@
         "nodes": {
             "insert": "nowdb-request-insert.js",
             "select_all": "nowdb-request-select-all.js",
+            "select_id": "nowdb-request-select-id.js",
             "select_where": "nowdb-request-select-where.js",
             "remove_id": "nowdb-request-remove-id.js",
             "update_id": "nowdb-request-update-id.js",
