@@ -67,5 +67,8 @@
             "string_number": "nowdb-string-number.js",
             "string_number_ui": "nowdb-string-number-ui.js"
         }
+    },
+    "dependencies": {
+        "querystring": "^0.2.1"
     }
 }
