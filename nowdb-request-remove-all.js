@@ -2,20 +2,18 @@ module.exports = function(RED) {
     var https = require("https");
 
     //Payload Read & Response
-    function remove_where(config) {
+    function remove_all(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
         node.on('input', function(msg) {
             const options = {
                 hostname: 'io.nowdb.net',
-                path: '/v2/remove_where/token/' +
+                path: '/v2/remove_all/token/' +
                     config.token + '/project/' +
                     config.project + '/collection/' +
                     config.collection + '/appid/' +
-                    config.appid + '/where_field/' +
-                    msg.payload.where_field + '/where_value/' +
-                    msg.payload.where_value,
+                    config.appid,
                 method: 'GET'
             };
 
@@ -41,5 +39,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("remove_where", remove_where);
+    RED.nodes.registerType("remove_all", remove_all);
 }

@@ -1,5 +1,5 @@
 module.exports = function(RED) {
-    var request = require("request");
+    var https = require("https");
 
     //Payload Read & Response
     function remove_id(config) {
@@ -7,23 +7,36 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', function(msg) {
-            var uri = 'https://io.nowdb.net/v2/remove_id/token/' +
-                config.token + '/project/' +
-                config.project + '/collection/' +
-                config.collection + '/appid/' +
-                config.appid + '/id/' +
-                msg.payload.id;
+            const options = {
+                hostname: 'io.nowdb.net',
+                path: '/v2/remove_id/token/' +
+                    config.token + '/project/' +
+                    config.project + '/collection/' +
+                    config.collection + '/appid/' +
+                    config.appid + '/id/' +
+                    msg.payload.id,
+                method: 'GET'
+            };
 
-            request.get(uri, function(error, response, body) {
-                if (response.statusCode === 200) {
-                    msg.payload = body;
-                } else {
-                    msg.payload = {
-                        "statusCode": response.statusCode
-                    };
-                }
-                node.send(msg);
+            const req = https.request(options, res => {
+                var data = '';
+
+                res.on('data', chunk => {
+                    data += chunk;
+                });
+
+                res.on('end', function() {
+                    msg.payload = data;
+
+                    node.send(msg);
+                });
             });
+
+            req.on('error', error => {
+                console.error(error)
+            });
+
+            req.end();
         });
     }
 

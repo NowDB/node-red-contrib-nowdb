@@ -1,4 +1,4 @@
-<script type="text/html" data-template-name="select_where">
+<script type="text/html" data-template-name="update_all">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -31,18 +31,18 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="select_where">
+<script type="text/html" data-help-name="update_all">
     <p>
         <b>About</b><br/>
-        <span>This node use for get data by some fields from a <b>collection</b> in <a href="https://nowdb.net">NowDB</a>.</span><br/><br/>
+        <span>This node use for update data by id to a <b>collection</b> in <a href="https://nowdb.net">NowDB</a>.</span><br/><br/>
         <span>This node will return data from NowDB with stringify JSON data array on <code>msg.payload</code>.</span>
     </p>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('select_where', {
+    RED.nodes.registerType('update_all', {
         category: 'NowDB',
-        color: '#E6E0F8',
+        color: '#DDDDDD',
         defaults: {
             name: {
                 value: ""
@@ -67,10 +67,10 @@
         inputs: 1,
         outputs: 1,
         icon: "white-globe.png",
-        paletteLabel: 'select where',
+        paletteLabel: 'update all',
         align: 'left',
         label: function() {
-            return this.name || "select_where";
+            return this.name || "update_all";
         }
     });
 </script>

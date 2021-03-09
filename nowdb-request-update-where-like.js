@@ -3,7 +3,7 @@ module.exports = function(RED) {
     var querystring = require('querystring');
 
     //Payload Read & Response
-    function insert(config) {
+    function update_where_like(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
@@ -30,7 +30,7 @@ module.exports = function(RED) {
 
             const options = {
                 hostname: 'io.nowdb.net',
-                path: '/v2/insert',
+                path: '/v2/update_where_like/',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -63,5 +63,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("insert", insert);
+    RED.nodes.registerType("update_where_like", update_where_like);
 }

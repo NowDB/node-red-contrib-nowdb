@@ -1,5 +1,6 @@
 module.exports = function(RED) {
-    var request = require("request");
+    var https = require("https");
+    var querystring = require('querystring');
 
     //Payload Read & Response
     function update_id(config) {
@@ -14,9 +15,7 @@ module.exports = function(RED) {
         }
 
         node.on('input', function(msg) {
-            var uri = 'https://io.nowdb.net/v2/update_id';
-
-            var data = msg.payload;
+            const data = msg.payload;
             var credential = {
                 "token": config.token,
                 "project": config.project,
@@ -27,17 +26,40 @@ module.exports = function(RED) {
             var form_data = {};
             form_data = jsonConcat(form_data, credential);
             form_data = jsonConcat(form_data, data);
+            form_data = querystring.stringify(form_data);
 
-            request.post({ url: uri, form: form_data }, function(error, response, body) {
-                if (response.statusCode === 200) {
-                    msg.payload = body;
-                } else {
-                    msg.payload = {
-                        "statusCode": response.statusCode
-                    };
+            const options = {
+                hostname: 'io.nowdb.net',
+                path: '/v2/update_id/',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': form_data.length
                 }
-                node.send(msg);
+            };
+
+            const req = https.request(options, res => {
+                res.setEncoding('utf8');
+
+                var data_return = '';
+
+                res.on('data', chunk => {
+                    data_return += chunk;
+                });
+
+                res.on('end', function() {
+                    msg.payload = data_return;
+
+                    node.send(msg);
+                });
             });
+
+            req.on('error', error => {
+                console.error(error)
+            })
+
+            req.write(form_data);
+            req.end();
         });
     }
 
